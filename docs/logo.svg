@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Pruta">
+  <defs>
+    <radialGradient id="g" cx=".32" cy=".26" r=".9">
+      <stop offset="0" stop-color="#fff3c4"/>
+      <stop offset=".3" stop-color="#f9d268"/>
+      <stop offset=".66" stop-color="#e3a632"/>
+      <stop offset="1" stop-color="#b8780e"/>
+    </radialGradient>
+  </defs>
+  <circle cx="64" cy="64" r="60" fill="url(#g)" stroke="#b27407" stroke-width="3"/>
+  <circle cx="64" cy="64" r="49" fill="none" stroke="#fff5cd" stroke-opacity=".6" stroke-width="5"/>
+  <circle cx="64" cy="64" r="44" fill="none" stroke="#8a5200" stroke-opacity=".4" stroke-width="2" stroke-dasharray="2 3.5"/>
+  <!-- פ from Frank Ruhl Libre Black (SIL OFL 1.1), as an outline so it looks the same everywhere -->
+  <path fill="#7c4a02" d="M50.5 83.6 52.4 71.8H71Q71.9 71.8 72.6 71.3Q73.2 70.7 73.6 69.4Q74 68.1 74 66Q74 63 73 61.6Q72 60.2 69.3 60.2H54.8Q54 60.2 53 59.7Q52 59.2 51.3 57.9Q50.5 56.7 50.5 54.4Q50.5 52.6 50.9 50.7Q51.4 48.9 51.8 47.3Q52.3 45.8 52.6 45.4H53.8V46.8Q53.8 47.6 54.2 48Q54.6 48.4 55.3 48.4H68.8Q71.1 48.4 72.7 49.5Q74.3 50.5 75.2 52.6Q75.4 52.9 75.9 54.6Q76.4 56.3 77 59.2Q77.5 62 77.5 65.9Q77.5 69.2 77 72.2Q76.6 75.2 75.9 77.9Q75.3 80.7 74.7 83.6ZM52.4 70Q52.3 69.2 52.3 68.7Q52.3 68.2 52.3 67.7Q52.3 65.6 52.8 64.2Q53.3 62.7 54 61.8Q54.7 60.8 55.1 60.2V59.4H58.1V60.2Q57.6 60.6 57.3 61.2Q57 61.8 56.9 62.3H59.7Q60.6 62.3 61.3 62.9Q61.9 63.6 61.9 64.5V69.7H60.7Q60.4 69.1 59.8 68.8Q59.1 68.4 58 68.4Q55.6 68.4 54.9 70Z"/>
+</svg>

@@ -1,0 +1,44 @@
+name: Bug report
+description: Something doesn't work as it should
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ⚠️ **Never attach a real bank statement, screenshot of real transactions, or your `data/` folder.**
+        Pruta is built so your financial data never leaves your computer — please keep it that way here too.
+        If a file is read wrongly, describe its layout (column names, how amounts and dates are written) or
+        attach a copy where every name and number has been replaced.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what you saw instead.
+    validations:
+      required: true
+  - type: dropdown
+    id: edition
+    attributes:
+      label: How do you run Pruta?
+      options:
+        - Pruta.html (single file, double-click)
+        - start script / run.py (data saved next to the code)
+        - index.html opened directly
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and operating system
+      placeholder: Chrome 128 on Windows 11
+    validations:
+      required: true
+  - type: input
+    id: bank
+    attributes:
+      label: Bank or card company of the statement (if relevant)
+  - type: textarea
+    id: console
+    attributes:
+      label: Errors from the browser console (F12), if any
+      render: text

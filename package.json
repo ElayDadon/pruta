@@ -1,0 +1,20 @@
+{
+  "name": "pruta",
+  "version": "1.0.0",
+  "description": "A private, offline spending analyser for Israeli bank and credit-card statements. Plain HTML, CSS and JavaScript — no dependencies.",
+  "private": true,
+  "author": "Elay Dadon",
+  "license": "MIT",
+  "keywords": ["personal-finance", "budget", "expense-tracker", "offline-first", "privacy", "hebrew", "rtl", "vanilla-js", "excel", "data-visualization"],
+  "scripts": {
+    "start": "python3 run.py",
+    "build": "python3 tools/build-portable.py",
+    "test": "node tests/run.js && node tests/studio.js",
+    "test:engine": "node tests/run.js",
+    "test:studio": "node tests/studio.js",
+    "test:motion": "python3 tests/motion.py"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

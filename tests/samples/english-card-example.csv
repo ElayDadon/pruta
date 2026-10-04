@@ -1,0 +1,54 @@
+Transaction Date,Merchant,Category,Amount,Card
+01/01/2026,מסעדת השף,Restaurants,585.20,Visa 4417
+01/02/2026,WOLT,Restaurants,316.51,Visa 4417
+01/12/2026,מסעדת השף,Restaurants,199.80,Visa 4417
+01/13/2026,סופרפארם,Health,56.99,Visa 4417
+01/13/2026,ZARA,Shopping,393.44,Visa 4417
+01/14/2026,NETFLIX.COM,Subscriptions,226.09,Visa 4417
+01/15/2026,פז דלק,Fuel,592.99,Visa 4417
+01/16/2026,ZARA,Shopping,87.40,Visa 4417
+01/18/2026,פנגו,Transport,17.04,Visa 4417
+01/31/2026,ZARA,Shopping,480.25,Visa 4417
+02/01/2026,ארומה,Restaurants,40.13,Visa 4417
+02/01/2026,מסעדת השף,Restaurants,368.59,Visa 4417
+02/02/2026,פנגו,Transport,237.45,Visa 4417
+02/02/2026,שופרסל דיל,Groceries,379.41,Visa 4417
+02/13/2026,ZARA,Shopping,46.04,Visa 4417
+02/20/2026,מסעדת השף,Restaurants,459.63,Visa 4417
+02/26/2026,סופרפארם,Health,261.00,Visa 4417
+03/03/2026,ZARA,Shopping,284.59,Visa 4417
+03/05/2026,פז דלק,Fuel,142.91,Visa 4417
+03/10/2026,NETFLIX.COM,Subscriptions,421.67,Visa 4417
+03/11/2026,WOLT,Restaurants,484.84,Visa 4417
+03/12/2026,פז דלק,Fuel,264.13,Visa 4417
+03/24/2026,שופרסל דיל,Groceries,562.84,Visa 4417
+04/01/2026,סופרפארם,Health,581.75,Visa 4417
+04/13/2026,פנגו,Transport,477.69,Visa 4417
+04/19/2026,NETFLIX.COM,Subscriptions,86.05,Visa 4417
+05/02/2026,WOLT,Restaurants,564.35,Visa 4417
+05/05/2026,פנגו,Transport,478.59,Visa 4417
+05/14/2026,WOLT,Restaurants,444.24,Visa 4417
+05/15/2026,פנגו,Transport,75.33,Visa 4417
+05/17/2026,שופרסל דיל,Groceries,292.03,Visa 4417
+05/27/2026,פז דלק,Fuel,467.97,Visa 4417
+06/08/2026,שופרסל דיל,Groceries,323.42,Visa 4417
+06/10/2026,WOLT,Restaurants,400.64,Visa 4417
+07/13/2026,ZARA,Shopping,119.80,Visa 4417
+07/18/2026,שופרסל דיל,Groceries,214.77,Visa 4417
+07/18/2026,WOLT,Restaurants,29.90,Visa 4417
+07/20/2026,WOLT,Restaurants,409.02,Visa 4417
+07/22/2026,NETFLIX.COM,Subscriptions,353.76,Visa 4417
+07/26/2026,WOLT,Restaurants,36.22,Visa 4417
+07/27/2026,פנגו,Transport,324.47,Visa 4417
+07/29/2026,פז דלק,Fuel,77.45,Visa 4417
+07/29/2026,WOLT,Restaurants,561.72,Visa 4417
+07/30/2026,שופרסל דיל,Groceries,336.82,Visa 4417
+08/08/2026,ארומה,Restaurants,499.41,Visa 4417
+08/09/2026,פז דלק,Fuel,599.03,Visa 4417
+08/16/2026,פז דלק,Fuel,280.67,Visa 4417
+08/16/2026,ZARA,Shopping,162.94,Visa 4417
+08/24/2026,ZARA,Shopping,564.18,Visa 4417
+08/24/2026,פנגו,Transport,259.66,Visa 4417
+01/22/2026,REFUND ZARA,Shopping,-85.29,Visa 4417
+04/07/2026,REFUND ZARA,Shopping,-189.42,Visa 4417
+05/09/2026,REFUND ZARA,Shopping,-176.54,Visa 4417

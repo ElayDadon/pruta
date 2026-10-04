@@ -1,0 +1,186 @@
+/* ==========================================================================
+   stories.css — ההדמיות (ui/stories.js)
+   ---------------------------------------------------------------------------
+   אותה במה של הפתיח (showcase.css §6): רקע כהה, מטבע, גיליוש ותגים לבנים.
+   1. הכפתור שפותח הדמיה      4. השנה: פוסטרים, עמודות וטבעת
+   2. משותף: כותרת, שורות      5. הקבועות: חיובים ועמודות
+   3. החודש: הבמה לובשת אותו   6. הכל מסודר
+   ========================================================================== */
+
+/* ==========================================================================
+   1. הכפתור: מטבע קטן שמסתובב בריחוף — "מכאן מתחיל רצף"
+   ========================================================================== */
+.btnstory { gap: 9px; }
+.btnstory__coin { display: inline-grid; place-items: center; perspective: 300px; margin-inline-start: -4px; }
+.btnstory__coin .coin { transition: transform .9s var(--ease-out); }
+.btnstory:hover .btnstory__coin .coin, .btnstory:focus-visible .btnstory__coin .coin { transform: rotateY(360deg); }
+/* בראש חלון החודש: זכוכית מעל הצילום, וכשהראש נדבק למעלה — בצבע המבטא */
+.sheet__head .btnstory { height: 34px; padding: 0 13px; font-size: var(--fs-small); border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, .16); border-color: rgba(255, 255, 255, .28); color: #fff;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.sheet__head .btnstory:hover { background: rgba(255, 255, 255, .26); border-color: rgba(255, 255, 255, .36); }
+.sheet__head.is-stuck .btnstory { background: var(--accent-soft); border-color: transparent; color: var(--accent-strong); }
+.year-head .btnstory { margin-inline-start: auto; align-self: center; }
+
+/* ==========================================================================
+   2. משותף לכל ההדמיות
+   ========================================================================== */
+.fx__cap--wrap p { white-space: normal; width: max-content; max-width: min(90vw, 20em); }
+.fx__word h1.is-words { gap: .26em; }
+.fx__total--sm .fig { font-size: clamp(40px, 9.5vmin, 112px); }
+
+/* שורת קטגוריה: זכוכית כהה, פס באורך האמיתי, סכום וחלק */
+.fxrows { display: flex; flex-direction: column; gap: 10px; }
+.fxrow {
+  --c: var(--c1);
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px;
+  padding: 9px; padding-inline-end: 16px; border-radius: 18px;
+  background: rgba(255, 255, 255, .09); border: 1px solid rgba(255, 255, 255, .14);
+}
+.fxrow .ctile { background: rgba(255, 255, 255, .95); }
+.fxrow__main { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.fxrow__name { font-size: 15px; font-weight: 680; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fxrow__track { display: block; height: 7px; border-radius: 4px; background: rgba(255, 255, 255, .14); overflow: hidden; }
+.fxrow__track i { display: block; height: 100%; border-radius: 4px; background: var(--c); transform-origin: 100% 50%; }
+.fxrow.is-pending .fxrow__track i { background: repeating-linear-gradient(135deg, var(--mark) 0 4px, color-mix(in srgb, var(--mark) 45%, transparent) 4px 8px); }
+.fxrow__aside { display: flex; flex-direction: column; align-items: flex-end; gap: 1px; }
+.fxrow__aside b { font-size: 17px; font-weight: 800; letter-spacing: -.02em; }
+.fxrow__aside small { font-size: 12px; font-weight: 600; color: rgba(255, 255, 255, .7); }
+
+/* משפט: מה שהרצף אומר במילים */
+.fxm__lines p { position: relative; margin: 0; width: min(88vw, 30em); text-align: center; font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(18px, 3.3vmin, 30px); line-height: 1.5; text-shadow: 0 2px 24px rgba(0, 0, 0, .35); }
+/* הילה כהה מאחורי המשפט: הוא יושב על החותם, וצריך להיקרא בלי מאמץ */
+.fxm__lines p::before { content: ""; position: absolute; inset: -22px -34px; z-index: -1; pointer-events: none;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--m-deep, #070b22) 78%, transparent), transparent); }
+.fxm__take p { margin: 0; width: min(88vw, 34em); text-align: center; font-size: clamp(14px, 2.2vmin, 18px); line-height: 1.55; color: rgba(255, 255, 255, .86); }
+
+/* מספרים בתיבות זכוכית (סוף השנה) */
+.fxpills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; width: min(92vw, 660px); }
+.fxpill { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 132px; padding: 11px 18px 12px; border-radius: 18px;
+  background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .18); }
+.fxpill span { font-size: 12.5px; font-weight: 600; color: rgba(255, 255, 255, .74); white-space: nowrap; }
+.fxpill b { font-size: clamp(19px, 3.2vmin, 26px); font-weight: 800; letter-spacing: -.03em; white-space: nowrap; }
+
+/* ==========================================================================
+   3. סיפור החודש — הבמה לובשת את החודש: הצילום שלו, הפלטה שלו, הספרה שלו
+   ========================================================================== */
+.fx--month .fx__bg { background: var(--m-deep, #090d32); }
+.fx--month .fx__band { opacity: .12; }
+.fx--month .fx__glow { background: radial-gradient(46% 38% at 50% 46%, color-mix(in srgb, var(--m-mid) 26%, transparent), transparent 72%); }
+.fx--month .fx__progress i { background: linear-gradient(270deg, var(--m-light), var(--m-mid)); }
+.fxm__photo { position: absolute; inset: 0; overflow: hidden; }
+.fxm__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; will-change: transform, opacity; user-select: none; -webkit-user-drag: none; }
+.fxm__scrim { position: absolute; inset: 0;
+  background: radial-gradient(75% 65% at 50% 45%, color-mix(in srgb, var(--m-deep) 58%, transparent) 0%, color-mix(in srgb, var(--m-deep) 86%, transparent) 70%, color-mix(in srgb, var(--m-deep) 95%, transparent) 100%); }
+.fxm__num { position: absolute; left: 2vw; bottom: -5vmin; direction: ltr; opacity: 0; pointer-events: none;
+  font-family: var(--font-display); font-weight: 900; font-size: min(56vmin, 560px); line-height: .78; letter-spacing: -.03em;
+  color: transparent; -webkit-text-stroke: 2px rgba(255, 255, 255, .22); }
+
+.fxm__sub p { margin: 0; display: flex; align-items: center; gap: 10px; white-space: nowrap; font-size: clamp(15px, 2.6vmin, 22px); font-weight: 600; color: rgba(255, 255, 255, .86); }
+.fxm__sub b { font-family: var(--font-display); font-weight: 700; color: var(--m-light, #fff); }
+.fxm__sub span::before { content: "·"; margin-inline-end: 10px; opacity: .6; }
+
+.fxm__chip { display: inline-flex; align-items: center; height: 32px; padding: 0 14px; border-radius: 999px; white-space: nowrap;
+  background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .22); color: #fff; font-size: clamp(13px, 2vmin, 16px); font-weight: 700; }
+.fxm__chip.is-good { background: rgba(26, 169, 132, .32); border-color: rgba(120, 240, 200, .45); }
+.fxm__chip.is-bad { background: rgba(238, 107, 111, .3); border-color: rgba(255, 170, 172, .45); }
+
+/* עמודה לכל יום */
+.fxm__days { display: flex; align-items: flex-end; gap: 2px; }
+.fxm__days i { display: block; flex: 1 1 0; min-width: 0; height: 3px; border-radius: 4px 4px 2px 2px; transform-origin: 50% 100%;
+  background: linear-gradient(180deg, #fff, color-mix(in srgb, var(--m-light, #fff) 70%, var(--m-mid, #fff)));
+  box-shadow: 0 10px 22px -12px var(--m-mid); }
+.fxm__days i.is-zero { height: 2px; opacity: .28; box-shadow: none; }
+.fxm__axis { position: relative; height: 24px; font-size: 12px; font-weight: 600; color: rgba(255, 255, 255, .66); font-variant-numeric: tabular-nums; }
+.fxm__axis span { position: absolute; top: 6px; transform: translateX(50%); }
+
+/* שלושה רגעים: כרטיסים לבנים */
+.fxmo {
+  --c: var(--m-mid, var(--accent));
+  display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 18px 18px 16px; border-radius: 24px;
+  background: rgba(255, 255, 255, .97); color: #131834; text-align: start;
+  box-shadow: 0 34px 70px -28px rgba(0, 0, 0, .8), 0 0 0 1px rgba(255, 255, 255, .5);
+}
+.fxmo__icon { width: 48px; height: 48px; flex: none; border-radius: 15px; display: grid; place-items: center;
+  background: color-mix(in srgb, var(--c) 16%, #fff); color: color-mix(in srgb, var(--c) 82%, #000); }
+.fxmo__main { display: flex; flex-direction: column; gap: 3px; min-width: 0; width: 100%; }
+.fxmo__k { font-size: 12.5px; font-weight: 760; color: color-mix(in srgb, var(--c) 72%, #131834); }
+.fxmo__t { font-family: var(--font-display); font-size: 19px; font-weight: 750; line-height: 1.25; overflow: hidden; overflow-wrap: anywhere;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; unicode-bidi: plaintext; text-align: right; }
+.fxmo__s { font-size: 12.5px; color: #7f89a6; }
+.fxmo__f { margin-top: auto; font-size: 30px; font-weight: 800; letter-spacing: -.04em; line-height: 1; }
+.fxmo--row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; column-gap: 12px; padding: 12px 14px; border-radius: 18px; }
+.fxmo--row .avatar, .fxmo--row .ctile { --s: 42px !important; }
+.fxmo--row .fxmo__icon { width: 42px; height: 42px; border-radius: 13px; }
+.fxmo--row .fxmo__t { font-size: 16px; -webkit-line-clamp: 1; }
+.fxmo--row .fxmo__f { margin: 0; font-size: 20px; }
+
+/* ==========================================================================
+   4. סיפור השנה
+   ========================================================================== */
+.fxy__card { position: relative; overflow: hidden; border-radius: 18px; background: #10142e;
+  box-shadow: 0 26px 50px -24px rgba(0, 0, 0, .8), 0 0 0 1px rgba(255, 255, 255, .16); }
+.fxy__card .poster { position: absolute; inset: 0; height: auto; }
+.fxy__amt { position: absolute; z-index: 2; bottom: 8px; inset-inline-start: 8px; height: 26px; padding: 0 10px; line-height: 26px; border-radius: 999px;
+  background: rgba(255, 255, 255, .95); color: #131834; font-size: 13px; font-weight: 800; box-shadow: 0 6px 14px -8px rgba(0, 0, 0, .6); }
+.fxy__card.is-partial .fxy__amt { background: rgba(255, 255, 255, .7); }
+
+/* עמודה לכל חודש, בצבע של החודש */
+.fxy__chart { display: flex; flex-direction: column; }
+.fxy__cols { position: relative; display: flex; align-items: flex-end; }
+.fxy__cols > span { display: flex; justify-content: center; align-items: flex-end; height: 100%; }
+.fxy__col { display: block; border-radius: 12px 12px 4px 4px; transform-origin: 50% 100%;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--mm) 58%, #fff), var(--mm));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4), 0 20px 34px -20px var(--mm); }
+.fxy__col.is-partial { opacity: .5; }
+.fxy__avg { position: absolute; left: 0; right: 0; height: 0; border-top: 2px dashed rgba(255, 255, 255, .66); transform-origin: 100% 50%; }
+.fxy__labels { display: flex; height: 26px; align-items: flex-end; }
+.fxy__labels span { text-align: center; font-size: clamp(10px, 1.6vmin, 13px); font-weight: 650; color: rgba(255, 255, 255, .8); white-space: nowrap; }
+.fxy__flag { display: flex; flex-direction: column; align-items: center; padding: 5px 11px 6px; border-radius: 12px; white-space: nowrap;
+  background: rgba(255, 255, 255, .96); color: #131834; box-shadow: 0 12px 26px -12px rgba(0, 0, 0, .7); }
+.fxy__flag small { font-size: 11px; font-weight: 700; color: #4a5373; }
+.fxy__flag b { font-size: 14.5px; font-weight: 800; }
+.fxy__avglabel { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 999px; white-space: nowrap;
+  background: rgba(9, 13, 50, .74); border: 1px solid rgba(255, 255, 255, .3); font-size: 12.5px; font-weight: 650; }
+
+/* הטבעת: קשת לכל קטגוריה, שמצוירת בתורה */
+.fxy__ring svg { display: block; overflow: visible; filter: drop-shadow(0 18px 30px rgba(0, 0, 0, .35)); }
+.fxy__track { fill: none; stroke: rgba(255, 255, 255, .1); stroke-width: 18; }
+.fxy__arc { fill: none; stroke-width: 18; stroke-dasharray: 1 1; stroke-dashoffset: 1; }
+
+/* ==========================================================================
+   5. הקבועות של השנה הקרובה
+   ========================================================================== */
+.fxr__list { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.fxr__chip { height: 44px; }
+.fxr__chip .fxchip__label { max-width: 13em; overflow: hidden; text-overflow: ellipsis; }
+.fxr__chip small { font-size: 12px; font-weight: 600; color: #7f89a6; }
+.fxr__chip .ctile { border-radius: 50%; }
+.fxr__cols { display: flex; align-items: flex-end; }
+.fxr__slot { display: flex; justify-content: center; }
+.fxr__col { position: relative; display: block; }
+.fxr__seg { position: absolute; left: 0; right: 0; border-radius: 5px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--c) 76%, #fff), var(--c)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35); }
+
+/* ==========================================================================
+   6. הכל מסודר
+   ========================================================================== */
+.fxs__word h2 { margin: 0; white-space: nowrap; font-family: var(--font-display); font-weight: 900; font-size: clamp(40px, 9vmin, 100px); line-height: 1;
+  letter-spacing: -.01em; text-shadow: 0 6px 36px rgba(0, 0, 0, .35); }
+
+@media (max-width: 700px), (max-height: 500px) {
+  .fxrow { gap: 10px; padding: 7px; padding-inline-end: 12px; border-radius: 15px; }
+  .fxrow .ctile { --s: 30px !important; }
+  .fxrow__name { font-size: 13.5px; }
+  .fxrow__aside b { font-size: 15px; }
+  .fxr__chip { height: 40px; }
+  .fxr__chip .fxchip__label { max-width: 9em; }
+  .fxy__amt { height: 22px; line-height: 22px; padding: 0 8px; font-size: 11.5px; bottom: 6px; inset-inline-start: 6px; }
+  .fxy__flag { padding: 4px 9px 5px; }
+  .fxy__flag b { font-size: 13px; }
+  .fxpill { min-width: 0; padding: 9px 14px 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btnstory { display: none !important; }
+}

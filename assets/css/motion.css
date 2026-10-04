@@ -1,0 +1,57 @@
+/* ==========================================================================
+   motion.css — תנועה בסיסית: כניסת עמוד, כרטיס שמתרומם, כרטיס השיוך, גרפים
+   ---------------------------------------------------------------------------
+   • כרטיסים לחיצים מתרוממים למגע (קטגוריות, הצעות שיוך).
+   • עמודות וטבעות בגרפים צומחות בכניסה.
+   • בדפדפן בלי View Transitions הדף "מתהפך" סביב השדרה מימין (view-enter).
+   המעברים הגדולים — הפתיח, קליטת קובץ, כרטיס שהופך לחלון, כניסה בגלילה —
+   נמצאים ב-showcase.css, והחלונות עצמם ב-overlays.css.
+   מי שביקש במערכת ההפעלה להפחית תנועה — מקבל הכל סטטי.
+   ========================================================================== */
+
+.main { perspective: 1800px; perspective-origin: 100% 0; }
+
+@keyframes page-turn {
+  0%   { opacity: 0; transform: translate3d(0, 8px, -80px) rotateY(-8deg); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes block-in { from { opacity: 0; transform: translate3d(0, 14px, 0); } to { opacity: 1; transform: none; } }
+
+.view-enter { transform-origin: 100% 0; animation: page-turn .6s var(--ease-out) both; }
+.view-enter > * { animation: block-in .5s var(--ease-out) both; animation-delay: calc(70ms + var(--step, 0) * 55ms); }
+
+/* ---------- כרטיס לחיץ שמתרומם ---------- */
+.lift { transition: transform .38s var(--ease-out), box-shadow .38s var(--ease-out); transform-style: preserve-3d; }
+.lift:hover { transform: perspective(1000px) translateY(-4px) rotateX(2.5deg); box-shadow: var(--ring), var(--e-2); }
+.lift:active { transform: perspective(1000px) translateY(-1px); transition-duration: .1s; }
+
+/* ---------- כרטיס השיוך: יוצא הצידה, הבא נכנס ---------- */
+@keyframes card-in { from { opacity: 0; transform: perspective(1400px) translateX(60px) rotateY(16deg); } to { opacity: 1; transform: none; } }
+.tcard.is-entering { animation: card-in .5s var(--ease-out) both; }
+.tcard.is-leaving { opacity: 0; transform: perspective(1400px) translateX(-80px) rotateY(-18deg); transition: transform .32s var(--ease-soft), opacity .28s; }
+
+/* ---------- מספר גיבור ---------- */
+@keyframes fig-settle { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.fig-settle { animation: fig-settle .6s var(--ease-out) .1s both; }
+
+/* ---------- גרפים נכנסים ---------- */
+@keyframes rise { from { transform: scaleY(0); } to { transform: none; } }
+.chart--enter .bar-mark { transform-box: fill-box; transform-origin: 50% 100%; animation: rise .6s var(--ease-out) both; animation-delay: calc(120ms + var(--i, 0) * 18ms); }
+@keyframes ring-in { from { opacity: 0; transform: rotate(-40deg) scale(.9); } to { opacity: 1; transform: none; } }
+.chart--enter .donut svg { animation: ring-in .7s var(--ease-out) both; transform-origin: 50% 50%; }
+@keyframes grow-x { from { transform: scaleX(0); } to { transform: none; } }
+.grow-x { transform-origin: 100% 50%; animation: grow-x .8s var(--ease-out) .1s both; }
+
+/* ---------- פס התקדמות ---------- */
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 200; pointer-events: none; }
+.progress i { display: block; height: 100%; width: 0; margin-inline-start: auto; background: linear-gradient(90deg, var(--hero-c), var(--accent)); transition: width .3s var(--ease-out), opacity .3s; }
+
+/* ---------- העדפת תנועה מופחתת ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .main { perspective: none; }
+  .view-enter, .view-enter > *, .tcard.is-entering, .fig-settle, .chart--enter .bar-mark, .chart--enter .donut svg, .grow-x { animation: none !important; }
+  .lift, .lift:hover, .lift:active, .tcard.is-leaving { transform: none !important; transition: box-shadow .15s, opacity .15s !important; }
+  .sheet, .dialog, .pop, .palette, .veil, .toast { transition-duration: .01ms !important; }
+  .sheet, .sheet.is-under, .sheet.is-closing { transform: none !important; }
+}

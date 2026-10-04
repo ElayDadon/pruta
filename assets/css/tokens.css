@@ -1,0 +1,249 @@
+/* ==========================================================================
+   tokens.css — אסימוני העיצוב של "פרוטה"
+   ---------------------------------------------------------------------------
+   כל צבע, גודל, מרווח, רדיוס, צל ותנועה מוגדרים כאן — ורק כאן.
+   שאר קבצי העיצוב משתמשים באסימונים בלבד.
+
+   צבע המבטא מתחלף לפי ערכה (data-accent על <html>): דיו, טורקיז, כתום, סגול, פטל.
+   כל הגוונים הנגזרים — רקע עדין, קו, טקסט חזק, הדרגת הכותרת — מחושבים ממנו.
+
+   שמונת צבעי הקטגוריות זהים בבהיר ובכהה, ונבחרו כך שיישארו נבדלים זה מזה גם בעיוורון צבעים:
+   בסימולציה של פרוטנופיה, דאוטרנופיה וטריטנופיה (Machado 2009) המרחק הקטן ביותר בין שני צבעים
+   כלשהם הוא ΔE2000 ≈ 11–12 — הרמה של פלטת Okabe–Ito. הבדיקה רצה עם שאר הבדיקות (tests/run.js).
+   הזוג יצא/נכנס (כחול/ירוק) נבדל היטב בכל המצבים; ועודף/גירעון מלווים תמיד בחץ, בסימן ובמילה.
+   ========================================================================== */
+
+/* ---------- גופנים: קבצים מקומיים בתיקיית הפרויקט (רישיון פתוח OFL) — בלי שום בקשה לרשת ----------
+   Heebo            לממשק ולמספרים (ספרות ברוחב אחיד)
+   Frank Ruhl Libre  לכותרות ולשם המוצר — הסריף העברי הקלאסי, כמו על שטר */
+@font-face { font-family: "Heebo"; src: url("../fonts/Heebo.woff") format("woff"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Frank Ruhl Libre"; src: url("../fonts/FrankRuhlLibre.woff") format("woff"); font-weight: 300 900; font-style: normal; font-display: swap; }
+
+:root {
+  color-scheme: light;
+
+  /* ---------- משטחים ---------- */
+  --paper:        #f3f5fa;
+  --surface:      #ffffff;
+  --surface-2:    #f7f8fc;
+  --surface-3:    #eef1f7;
+  --surface-sunk: #e8ecf4;
+
+  /* ---------- דיו ---------- */
+  --ink:     #131834;
+  --ink-2:   #4a5373;
+  --ink-3:   #7f89a6;
+  --ink-4:   #aeb6cb;
+  --ink-inv: #ffffff;
+
+  /* ---------- קווים ---------- */
+  --rule:        #e2e6ef;
+  --rule-soft:   #ecf0f6;
+  --rule-strong: #d1d7e4;
+  --ring:        0 0 0 1px rgba(19, 24, 52, .055);
+
+  /* ---------- מבטא (מתחלף לפי ערכה) ---------- */
+  --accent:        #3449d8;
+  --accent-strong: color-mix(in srgb, var(--accent) 86%, #000);
+  --accent-soft:   color-mix(in srgb, var(--accent) 8%, var(--surface));
+  --accent-tint:   color-mix(in srgb, var(--accent) 14%, var(--surface));
+  --accent-line:   color-mix(in srgb, var(--accent) 26%, var(--surface));
+  --on-accent:     #ffffff;
+  --hero-a:        color-mix(in srgb, var(--accent) 70%, #050818);
+  --hero-b:        var(--accent);
+  --hero-c:        color-mix(in srgb, var(--accent) 58%, #ffffff);
+
+  /* ---------- תשומת לב: "ממתין לכם" ---------- */
+  --mark:      #f2a93b;
+  --mark-ink:  #8a5600;
+  --mark-soft: #fff4dc;
+  --mark-line: #f5d79c;
+
+  /* ---------- כסף ---------- */
+  --spend:      #3f6fe4;
+  --spend-soft: #e8effd;
+  --pos:        #12a07a;
+  --pos-ink:    #0b7a5b;
+  --pos-soft:   #e2f6ee;
+  --neg:        #e5484d;
+  --neg-ink:    #c2292f;
+  --neg-soft:   #fdecec;
+  --focus:      #3f6fe4;
+
+  /* ---------- קטגוריות: סדר קבוע ---------- */
+  --c1: #5282ff;   /* כחול   */
+  --c2: #179184;   /* טורקיז */
+  --c3: #e7a925;   /* ענבר   */
+  --c4: #e472a9;   /* ורד    */
+  --c5: #744dcc;   /* סגול   */
+  --c6: #de5f00;   /* כתום   */
+  --c7: #30b2e5;   /* תכלת   */
+  --c8: #77a562;   /* ירוק   */
+  --c-rest: #9aa3b5;
+  /* גוונים משניים, מעומעמים: לאריחים ולכרטיסים של קטגוריות קטנות (מעבר לשמונה).
+     בגרפים עם כמה סדרות הן עדיין מתקבצות ל"כל השאר" באפור. */
+  --x1: #c4605a; --x2: #96953a; --x3: #a05bb8; --x4: #5f7fa8; --x5: #3f9d74; --x6: #a8794f;
+
+  /* ---------- רמפה רציפה (מפת חום): בהיר = מעט ---------- */
+  --heat-0: #d6e6fb; --heat-1: #a9caf5; --heat-2: #78aaee; --heat-3: #4a88e6;
+  --heat-4: #2f68c6; --heat-5: #184a94;
+
+  /* ---------- טיפוגרפיה ---------- */
+  --font: "Heebo", system-ui, -apple-system, "Segoe UI", "Arial Hebrew", Arial, sans-serif;
+  --font-display: "Frank Ruhl Libre", "Heebo", "David", serif;
+  --fs-micro: 11.5px;
+  --fs-tiny:  12.5px;
+  --fs-small: 13.5px;
+  --fs-base:  14.5px;
+  --fs-lead:  16px;
+  --fs-h3:    17px;
+  --fs-h2:    21px;
+  --fs-h1:    30px;
+  --fs-fig:   24px;
+  --fs-hero:  60px;
+
+  /* ---------- מרווח (בסיס 4) ---------- */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 20px; --s6: 24px; --s7: 32px; --s8: 44px; --s9: 64px;
+
+  /* ---------- רדיוסים: ככל שהמשטח גדול יותר, הרדיוס גדול יותר ---------- */
+  --r-xs: 6px; --r-sm: 9px; --r-md: 12px; --r-lg: 16px; --r-xl: 20px; --r-2xl: 26px; --r-pill: 999px;
+
+  /* ---------- עומק ---------- */
+  --e-0: 0 1px 2px rgba(19, 24, 52, .05);
+  --e-1: 0 1px 2px rgba(19, 24, 52, .05), 0 6px 16px -8px rgba(19, 24, 52, .14);
+  --e-2: 0 2px 4px rgba(19, 24, 52, .06), 0 16px 34px -14px rgba(19, 24, 52, .24);
+  --e-3: 0 6px 14px rgba(19, 24, 52, .08), 0 34px 70px -26px rgba(19, 24, 52, .40);
+
+  /* ---------- מבנה ---------- */
+  --side-w: 262px;
+  --content-max: 1140px;
+
+  /* ---------- תנועה ---------- */
+  --ease-out:  cubic-bezier(.2, .9, .25, 1);
+  --ease-soft: cubic-bezier(.4, .12, .25, 1);
+  --t-fast: 140ms var(--ease-out);
+  --t-mid:  260ms var(--ease-out);
+}
+
+/* ---------- ערכות מבטא (בהיר) ---------- */
+:root[data-accent="teal"]   { --accent: #0c8270; }
+:root[data-accent="amber"]  { --accent: #cf6119; }
+:root[data-accent="violet"] { --accent: #6b46d9; }
+:root[data-accent="rose"]   { --accent: #cc3a6d; }
+
+/* ==========================================================================
+   מצב כהה — צעדים שנבחרו בנפרד, לא היפוך
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --paper: #0b0e19; --surface: #141826; --surface-2: #191e2e; --surface-3: #212738; --surface-sunk: #262d40;
+    --ink: #eef1fa; --ink-2: #aab3cc; --ink-3: #7a84a2; --ink-4: #4f587a; --ink-inv: #0b0e19;
+    --rule: #262c40; --rule-soft: #1e2334; --rule-strong: #333b54; --ring: 0 0 0 1px rgba(255, 255, 255, .06);
+    --accent: #7d8fff;
+    --accent-strong: var(--accent);
+    --accent-soft: color-mix(in srgb, var(--accent) 12%, var(--surface));
+    --accent-tint: color-mix(in srgb, var(--accent) 18%, var(--surface));
+    --accent-line: color-mix(in srgb, var(--accent) 34%, var(--surface));
+    --on-accent: #0b0e19;
+    --hero-a: color-mix(in srgb, var(--accent) 26%, #070912);
+    --hero-b: color-mix(in srgb, var(--accent) 52%, #070912);
+    --hero-c: color-mix(in srgb, var(--accent) 78%, #070912);
+    --mark: #e9a540; --mark-ink: #f4c27a; --mark-soft: #2c2312; --mark-line: #4a3816;
+    --spend: #4f86ee; --spend-soft: #1b2847;
+    --pos: #1aa984; --pos-ink: #45d1a7; --pos-soft: #10291f;
+    --neg: #ee6b6f; --neg-ink: #f69497; --neg-soft: #2d1519;
+    --focus: #6d9bf5;
+        --c-rest: #5f6880; --x1: #d2726c; --x2: #a7a648; --x3: #b272c9; --x4: #7693bd; --x5: #4fb088; --x6: #bb8c62;
+    --heat-0: #1a2742; --heat-1: #1f3d6c; --heat-2: #24589f; --heat-3: #3a7fdc; --heat-4: #72a6ef; --heat-5: #b9d4f7;
+    --e-0: 0 1px 2px rgba(0, 0, 0, .35);
+    --e-1: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 18px -8px rgba(0, 0, 0, .6);
+    --e-2: 0 2px 5px rgba(0, 0, 0, .45), 0 18px 38px -16px rgba(0, 0, 0, .75);
+    --e-3: 0 8px 16px rgba(0, 0, 0, .5), 0 40px 80px -28px rgba(0, 0, 0, .9);
+  }
+  :root:where(:not([data-theme="light"]))[data-accent="teal"]   { --accent: #36c9ab; }
+  :root:where(:not([data-theme="light"]))[data-accent="amber"]  { --accent: #f39a52; }
+  :root:where(:not([data-theme="light"]))[data-accent="violet"] { --accent: #a08bff; }
+  :root:where(:not([data-theme="light"]))[data-accent="rose"]   { --accent: #f2779f; }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0b0e19; --surface: #141826; --surface-2: #191e2e; --surface-3: #212738; --surface-sunk: #262d40;
+  --ink: #eef1fa; --ink-2: #aab3cc; --ink-3: #7a84a2; --ink-4: #4f587a; --ink-inv: #0b0e19;
+  --rule: #262c40; --rule-soft: #1e2334; --rule-strong: #333b54; --ring: 0 0 0 1px rgba(255, 255, 255, .06);
+  --accent: #7d8fff;
+  --accent-strong: var(--accent);
+  --accent-soft: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  --accent-tint: color-mix(in srgb, var(--accent) 18%, var(--surface));
+  --accent-line: color-mix(in srgb, var(--accent) 34%, var(--surface));
+  --on-accent: #0b0e19;
+  --hero-a: color-mix(in srgb, var(--accent) 26%, #070912);
+  --hero-b: color-mix(in srgb, var(--accent) 52%, #070912);
+  --hero-c: color-mix(in srgb, var(--accent) 78%, #070912);
+  --mark: #e9a540; --mark-ink: #f4c27a; --mark-soft: #2c2312; --mark-line: #4a3816;
+  --spend: #4f86ee; --spend-soft: #1b2847;
+  --pos: #1aa984; --pos-ink: #45d1a7; --pos-soft: #10291f;
+  --neg: #ee6b6f; --neg-ink: #f69497; --neg-soft: #2d1519;
+  --focus: #6d9bf5;
+  --c-rest: #5f6880; --x1: #d2726c; --x2: #a7a648; --x3: #b272c9; --x4: #7693bd; --x5: #4fb088; --x6: #bb8c62;
+  --heat-0: #1a2742; --heat-1: #1f3d6c; --heat-2: #24589f; --heat-3: #3a7fdc; --heat-4: #72a6ef; --heat-5: #b9d4f7;
+  --e-0: 0 1px 2px rgba(0, 0, 0, .35);
+  --e-1: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 18px -8px rgba(0, 0, 0, .6);
+  --e-2: 0 2px 5px rgba(0, 0, 0, .45), 0 18px 38px -16px rgba(0, 0, 0, .75);
+  --e-3: 0 8px 16px rgba(0, 0, 0, .5), 0 40px 80px -28px rgba(0, 0, 0, .9);
+}
+:root[data-theme="dark"][data-accent="teal"]   { --accent: #36c9ab; }
+:root[data-theme="dark"][data-accent="amber"]  { --accent: #f39a52; }
+:root[data-theme="dark"][data-accent="violet"] { --accent: #a08bff; }
+:root[data-theme="dark"][data-accent="rose"]   { --accent: #f2779f; }
+
+/* Premium appearance: category series above remain unchanged. */
+:root {
+  --paper:#f5f5ef; --surface:#ffffff; --surface-2:#f8f9f5; --surface-3:#eef1ea; --surface-sunk:#e8ede5;
+  --ink:#182f30; --ink-2:#516363; --ink-3:#5e716b; --ink-4:#91a09b;
+  --rule:#e1e7de; --rule-soft:#edf0e9; --rule-strong:#d0dbd1;
+  --accent:#237969; --accent-strong:#195e51; --accent-soft:color-mix(in srgb,var(--accent) 7%,var(--surface));
+  --accent-tint:color-mix(in srgb,var(--accent) 13%,var(--surface)); --accent-line:color-mix(in srgb,var(--accent) 23%,var(--surface));
+  --hero-a:#132e30; --hero-b:#245b51; --hero-c:#528f74; --focus:#237969;
+  --rail:#163436; --rail-ink:#f1f5eb; --rail-muted:#b2c6bd; --premium-hero:#16383a;
+  --premium-gold:#dfbe7b; --premium-leaf:#d8e8b0; --premium-line:#d3dfd4;
+  --side-w:244px; --content-max:1260px; --fs-base:14px; --fs-hero:66px;
+  --ring:0 0 0 1px var(--rule);
+  --e-0:0 3px 10px -6px #14352c1a;
+  --e-1:0 8px 24px -14px #14352c26;
+  --e-2:0 16px 40px -18px #14352c33;
+  --r-xl:20px; --r-2xl:24px;
+}
+:root[data-accent="teal"]{--accent:#0c8270;--accent-strong:#086253}
+:root[data-accent="amber"]{--accent:#b85c27;--accent-strong:#91451a}
+:root[data-accent="violet"]{--accent:#7351bf;--accent-strong:#573995}
+:root[data-accent="rose"]{--accent:#b53f6a;--accent-strong:#913154}
+:root[data-theme="dark"] {
+  --paper:#101d1f; --surface:#192b2c; --surface-2:#1c3030; --surface-3:#253b39; --surface-sunk:#2b413d;
+  --ink:#f0f4e9; --ink-2:#b5c8c0; --ink-3:#91aaa0; --ink-4:#728b82;
+  --rule:#304742; --rule-soft:#283d38; --rule-strong:#426055;
+  --accent:#92cdb3; --accent-strong:#92cdb3; --accent-soft:color-mix(in srgb,var(--accent) 9%,var(--surface));
+  --accent-tint:color-mix(in srgb,var(--accent) 16%,var(--surface)); --accent-line:color-mix(in srgb,var(--accent) 27%,var(--surface));
+  --on-accent:#102b25; --rail:#10282b; --premium-hero:#163639; --focus:#92cdb3;
+  --e-0:0 3px 10px -6px #0003;--e-1:0 8px 24px -14px #0005;--e-2:0 16px 40px -18px #0006;
+}
+:root[data-theme="dark"][data-accent="teal"]{--accent:#66d5b9;--accent-strong:var(--accent)}
+:root[data-theme="dark"][data-accent="amber"]{--accent:#efb278;--accent-strong:var(--accent)}
+:root[data-theme="dark"][data-accent="violet"]{--accent:#bea7f3;--accent-strong:var(--accent)}
+:root[data-theme="dark"][data-accent="rose"]{--accent:#f1a3be;--accent-strong:var(--accent)}
+@media(prefers-color-scheme:dark){
+  :root:where(:not([data-theme="light"])) {
+    --paper:#101d1f; --surface:#192b2c; --surface-2:#1c3030; --surface-3:#253b39; --surface-sunk:#2b413d;
+    --ink:#f0f4e9; --ink-2:#b5c8c0; --ink-3:#91aaa0; --ink-4:#728b82;
+    --rule:#304742; --rule-soft:#283d38; --rule-strong:#426055;
+    --accent:#92cdb3; --accent-strong:#92cdb3; --accent-soft:color-mix(in srgb,var(--accent) 9%,var(--surface));
+    --accent-tint:color-mix(in srgb,var(--accent) 16%,var(--surface)); --accent-line:color-mix(in srgb,var(--accent) 27%,var(--surface));
+    --on-accent:#102b25; --rail:#10282b; --premium-hero:#163639; --focus:#92cdb3;
+    --e-0:0 3px 10px -6px #0003;--e-1:0 8px 24px -14px #0005;--e-2:0 16px 40px -18px #0006;
+  }
+  :root:where(:not([data-theme="light"]))[data-accent="teal"]{--accent:#66d5b9;--accent-strong:var(--accent)}
+  :root:where(:not([data-theme="light"]))[data-accent="amber"]{--accent:#efb278;--accent-strong:var(--accent)}
+  :root:where(:not([data-theme="light"]))[data-accent="violet"]{--accent:#bea7f3;--accent-strong:var(--accent)}
+  :root:where(:not([data-theme="light"]))[data-accent="rose"]{--accent:#f1a3be;--accent-strong:var(--accent)}
+}

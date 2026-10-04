@@ -1,0 +1,30 @@
+name: Release
+
+# Push a tag like v1.0.0 to publish a release with Pruta.html attached:
+#   git tag v1.0.0 && git push origin v1.0.0
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: node tests/run.js
+      - run: python tools/build-portable.py
+      - run: node tests/studio.js
+      - name: Publish the release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: Pruta.html
+          generate_release_notes: true

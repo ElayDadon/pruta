@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="פרוטה — כל ההוצאות, בפרוטרוט. ניתוח דוח התנועות של הבנק, כולו על המחשב שלך: בלי שרת ובלי ענן.">
+<meta name="author" content="Elay Dadon">
+<title>פרוטה</title>
+
+<!--
+  מדיניות אבטחה: הדף רשאי לטעון רק קבצים מהתיקייה של עצמו. אין מקור חיצוני מותר אחד —
+  לא לסקריפטים, לא לגופנים, לא לתמונות ולא לבקשות רשת. גם אם משהו ישתבש, הדפדפן עצמו
+  יחסום כל ניסיון לשלוח נתונים החוצה.
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' file:; style-src 'self' file: 'unsafe-inline'; img-src 'self' file: data: blob:; font-src 'self' file:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+
+<!-- הצבע והמצב שנבחרו מוחלים לפני הציור הראשון, כדי שלא יהבהב צבע אחר -->
+<script src="assets/js/boot.js"></script>
+
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/overlays.css">
+<link rel="stylesheet" href="assets/css/motion.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/showcase.css">
+<link rel="stylesheet" href="assets/css/studio.css">
+<link rel="stylesheet" href="assets/css/premium.css">
+<link rel="stylesheet" href="assets/css/flow.css">
+<link rel="stylesheet" href="assets/css/stories.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><radialGradient id='g' cx='.32' cy='.26' r='.9'><stop offset='0' stop-color='%23fff3c4'/><stop offset='.3' stop-color='%23f9d268'/><stop offset='.66' stop-color='%23e3a632'/><stop offset='1' stop-color='%23b8780e'/></radialGradient></defs><circle cx='16' cy='16' r='15' fill='url(%23g)' stroke='%23b27407'/><circle cx='16' cy='16' r='11.5' fill='none' stroke='%238a5200' stroke-opacity='.4' stroke-dasharray='1 1.6'/><text x='16' y='22' font-size='16' font-weight='900' text-anchor='middle' fill='%237c4a02' font-family='Georgia,serif'>%D7%A4</text></svg>">
+</head>
+<body>
+
+<a class="skip" href="#view">דילוג לתוכן</a>
+<div class="progress" id="progress" aria-hidden="true"><i></i></div>
+
+<div class="shell">
+  <aside class="side" id="side" aria-label="ניווט"></aside>
+  <div class="main">
+    <header class="topbar" id="topbar"></header>
+    <header class="workspace" id="workspace" aria-label="המרחב האישי"></header>
+    <main class="main__inner" id="view" tabindex="-1"></main>
+  </div>
+</div>
+<nav class="tabbar" id="tabbar" aria-label="ניווט ראשי"></nav>
+
+<!-- מופיע כשגוררים קובץ מעל החלון -->
+<div class="dropveil" aria-hidden="true">
+  <div class="dropveil__box">
+    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4.5M7.5 9 12 4.5 16.5 9"/><path d="M4.5 14.5v4A1.5 1.5 0 0 0 6 20h12a1.5 1.5 0 0 0 1.5-1.5v-4"/></svg>
+    <b>שחררו כדי לטעון</b>
+    <span>אקסל או CSV · הקובץ נשאר במחשב הזה</span>
+  </div>
+</div>
+
+<input type="file" id="file-input" accept=".xlsx,.xlsm,.xls,.csv,.tsv,.txt,.xml,.html,.htm" multiple hidden>
+
+<noscript>
+  <div style="padding:40px;text-align:center">פרוטה זקוקה ל-JavaScript. היא רצה כולה בדפדפן ולא שולחת נתונים לשום מקום.</div>
+</noscript>
+
+<!-- קוראי קבצים -->
+<script src="assets/js/lib/zip.js"></script>
+<script src="assets/js/lib/xlsx.js"></script>
+<script src="assets/js/lib/csv.js"></script>
+<script src="assets/js/lib/sniff.js"></script>
+<!-- לוגיקה -->
+<script src="assets/js/core/parse.js"></script>
+<script src="assets/js/core/detect.js"></script>
+<script src="assets/js/core/categories.js"></script>
+<script src="assets/js/core/store.js"></script>
+<script src="assets/js/core/learn.js"></script>
+<script src="assets/js/ui/format.js"></script>
+<script src="assets/js/core/state.js"></script>
+<script src="assets/js/core/insights.js"></script>
+<!-- ממשק -->
+<script src="assets/js/ui/kit.js"></script>
+<script src="assets/js/ui/icons.js"></script>
+<script src="assets/js/ui/art.js"></script>
+<script src="assets/js/ui/motion.js"></script>
+<script src="assets/js/ui/posters.js"></script>
+<script src="assets/js/ui/overlays.js"></script>
+<script src="assets/js/ui/blocks.js"></script>
+<script src="assets/js/ui/picker.js"></script>
+<script src="assets/js/ui/charts.js"></script>
+<script src="assets/js/ui/txlist.js"></script>
+<script src="assets/js/ui/views.js"></script>
+<script src="assets/js/ui/importer.js"></script>
+<script src="assets/js/ui/palette.js"></script>
+<script src="assets/js/ui/fx.js"></script>
+<script src="assets/js/ui/stories.js"></script>
+<script src="assets/js/ui/studio.js"></script>
+<script src="assets/js/ui/premium.js"></script>
+<!-- עמודים -->
+<script src="assets/js/pages/welcome.js"></script>
+<script src="assets/js/pages/plan.js"></script>
+<script src="assets/js/pages/explore.js"></script>
+<script src="assets/js/pages/overview.js"></script>
+<script src="assets/js/pages/months.js"></script>
+<script src="assets/js/pages/categories.js"></script>
+<script src="assets/js/pages/transactions.js"></script>
+<script src="assets/js/pages/insights.js"></script>
+<script src="assets/js/pages/assign.js"></script>
+<script src="assets/js/pages/rules.js"></script>
+<script src="assets/js/pages/settings.js"></script>
+<script src="assets/js/pages/about.js"></script>
+<!-- הרכבה -->
+<script src="assets/js/router.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

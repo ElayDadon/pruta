@@ -1,0 +1,171 @@
+/* ==========================================================================
+   flow.css — שלושה מקומות, ומשחק השיוך
+   ---------------------------------------------------------------------------
+   1. הניווט: החודש שלי · התוכנית · לחקור, וכלים בקבוצה שקטה
+   2. לחקור: ארבע דלתות, ופס הלשוניות שבתוך כל חלק
+   3. לשיוך: לוח התוצאה, "בלחיצה אחת", ערימת הכרטיסים והעפה אל הקטגוריה
+   ========================================================================== */
+
+/* ==========================================================================
+   1. הניווט
+   ========================================================================== */
+.side .side__group:first-of-type .navlink { height: 46px; font-size: 14px; font-weight: 550; }
+.side__group--tools { margin-top: 30px; }
+.side__group--tools .navlink { height: 36px; font-size: 12.5px; opacity: .82; }
+.side__group--tools .navlink:hover, .side__group--tools .navlink[aria-current="page"] { opacity: 1; }
+/* החלקים של "לחקור" — רק כשנמצאים בתוכו */
+.navsub { display: none; flex-direction: column; gap: 1px; margin: 2px 0 6px; padding-inline-start: 42px; position: relative; }
+.side.in-explore .navsub { display: flex; animation: navsub-in .32s var(--ease-out) both; }
+@keyframes navsub-in { from { opacity: 0; translate: 0 -6px; } }
+.navsub::before { content: ""; position: absolute; inset-inline-start: 21px; top: 4px; bottom: 4px; width: 1px; background: currentColor; opacity: .18; }
+.navsub__link { display: flex; align-items: center; height: 31px; padding: 0 10px; border-radius: 8px; font-size: 12.5px; color: var(--rail-muted, var(--ink-3)); text-decoration: none; }
+.navsub__link:hover { color: var(--rail-ink, var(--ink)); background: #ffffff0a; text-decoration: none; }
+.navsub__link[aria-current="page"] { color: var(--premium-leaf, var(--accent-strong)); font-weight: 650; }
+.workspace__location a { color: var(--ink-3); }
+.workspace__location a:hover { color: var(--accent-strong); text-decoration: none; }
+@media (max-width: 900px) { .tabbar { grid-template-columns: repeat(4, 1fr); } }
+
+/* ==========================================================================
+   2. לחקור
+   ========================================================================== */
+/* פס הלשוניות שבראש חודשים / קטגוריות / תנועות / תובנות */
+.xnav { display: flex; align-items: center; gap: 10px; margin: 0 0 22px; min-width: 0; }
+.xnav__back { display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px; border-radius: 999px; font-size: 12.5px; font-weight: 600; color: var(--ink-2); flex: none; }
+.xnav__back:hover { background: var(--surface-3); color: var(--ink); text-decoration: none; }
+.xnav__tabs { display: flex; gap: 4px; padding: 4px; border-radius: 13px; background: var(--surface-3); overflow-x: auto; scrollbar-width: none; min-width: 0; }
+.xnav__tabs::-webkit-scrollbar { display: none; }
+.xnav__tab { display: inline-flex; align-items: center; gap: 7px; height: 34px; padding: 0 14px; border-radius: 10px; font-size: 13px; font-weight: 600; color: var(--ink-2); white-space: nowrap; transition: background var(--t-fast), color var(--t-fast); }
+.xnav__tab:hover { color: var(--ink); text-decoration: none; }
+.xnav__tab[aria-current="page"] { background: var(--surface); color: var(--accent-strong); box-shadow: 0 1px 2px #14352c14, 0 0 0 1px var(--rule-soft); }
+
+/* ארבע הדלתות */
+.xdoors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.xdoor { display: flex; flex-direction: column; min-width: 0; border-radius: 22px; background: var(--surface); box-shadow: var(--ring), var(--e-0); overflow: hidden; transition: box-shadow .25s var(--ease-out), translate .25s var(--ease-out); }
+.xdoor:hover { box-shadow: var(--ring), var(--e-2); translate: 0 -2px; }
+.xdoor__head { display: flex; align-items: center; gap: 12px; padding: 20px 22px 6px; color: var(--ink); }
+.xdoor__head:hover { text-decoration: none; }
+.xdoor__head > .ico:last-child { margin-inline-start: auto; color: var(--ink-4); transition: transform var(--t-fast), color var(--t-fast); }
+.xdoor:hover .xdoor__head > .ico:last-child { color: var(--accent-strong); transform: translateX(-4px); }
+.xdoor__icon { width: 40px; height: 40px; border-radius: 13px; display: grid; place-items: center; flex: none; background: var(--accent-soft); color: var(--accent-strong); }
+.xdoor__titles { display: flex; flex-direction: column; min-width: 0; }
+.xdoor__titles b { font-family: var(--font-display); font-size: 22px; font-weight: 700; line-height: 1.2; }
+.xdoor__titles span { font-size: 12px; color: var(--ink-3); }
+.xdoor__taste { flex: 1; min-height: 150px; padding: 14px 22px; display: grid; align-items: center; cursor: pointer; }
+.xdoor__line { margin: 0; padding: 12px 22px 18px; border-top: 1px solid var(--rule-soft); font-size: 12.5px; color: var(--ink-2); }
+.xdoor__line b { color: var(--ink); font-weight: 700; }
+
+/* חודשים: מניפה של פוסטרים */
+.xfan { position: relative; height: 150px; }
+.xfan__card { --i: 0; --n: 4; position: absolute; z-index: calc(var(--n) - var(--i)); top: 8px; width: 46%; height: 128px; border-radius: 16px; overflow: hidden;
+  inset-inline-start: calc(var(--i) * (54% / max(1, var(--n) - 1)));
+  rotate: calc((var(--i) - (var(--n) - 1) / 2) * 3deg); box-shadow: 0 16px 30px -18px #0007, 0 0 0 1px #ffffff30;
+  transition: translate .45s var(--ease-out), rotate .45s var(--ease-out); }
+.xfan__card .poster { position: absolute; inset: 0; height: auto; }
+.xfan__card .poster__num { font-size: 64px; }
+.xfan__amt { position: absolute; z-index: 2; bottom: 7px; inset-inline-start: 7px; height: 22px; padding: 0 8px; line-height: 22px; border-radius: 999px; background: #fffffff2; color: #131834; font-size: 11.5px; font-weight: 800; }
+.xdoor:hover .xfan__card { translate: calc((var(--i) - (var(--n) - 1) / 2) * 6px) -4px; }
+
+/* קטגוריות */
+.xcats { display: flex; flex-direction: column; gap: 18px; }
+.xcats__tiles { display: flex; gap: 14px; }
+.xcats__tile { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.xcats__tile small { font-size: 12px; font-weight: 700; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.xcats .compbar { height: 10px; }
+
+/* תנועות */
+.xsearch { display: flex; gap: 10px; align-items: center; }
+.xsearch .field { flex: 1; min-width: 0; }
+
+/* תובנות */
+.xinsight { display: flex; flex-direction: column; gap: 6px; }
+.xspark { width: 100%; height: 74px; display: block; overflow: visible; }
+.xspark__area { fill: var(--accent); opacity: .1; }
+.xspark__line { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+/* הקו נחשף מהישן (מימין) לחדש (משמאל) כשנכנסים לעמוד */
+.view-stagger .xspark, .view-enter .xspark { animation: xreveal 1.3s var(--ease-out) .3s both; }
+@keyframes xreveal { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 0); } }
+.xinsight__axis { display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-3); }
+
+/* עוד שלושה */
+.xextras { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+.xextra { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 0; border-radius: 16px; background: var(--surface); box-shadow: var(--ring); color: var(--ink); font: inherit; text-align: start; cursor: pointer; transition: box-shadow .2s, background .2s; }
+.xextra:hover { box-shadow: var(--ring), var(--e-1); background: var(--surface-2); }
+.xextra > span:nth-child(2) { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.xextra b { font-size: 13.5px; font-weight: 650; }
+.xextra small { font-size: 11.5px; color: var(--ink-3); }
+.xextra > .ico:last-child { color: var(--ink-4); }
+.xextra__icon { width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; flex: none; background: var(--surface-3); color: var(--ink-2); }
+
+/* ==========================================================================
+   3. לשיוך — המשחק
+   ========================================================================== */
+.sgame__hud { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 22px; padding: 18px 22px; margin-bottom: 16px;
+  border-radius: 20px; background: var(--premium-hero, var(--hero-a)); color: #f3f6ee; box-shadow: 0 16px 34px -22px #14352c66; }
+.sgame__score { display: flex; align-items: center; gap: 12px; }
+.sgame__score .coin { flex: none; }
+.sgame__score b { display: block; font-size: 26px; font-weight: 750; letter-spacing: -.035em; line-height: 1.05; }
+.sgame__score span { font-size: 12px; color: #c9dacf; }
+.sgame__meter { height: 10px; border-radius: 999px; background: #ffffff1c; overflow: hidden; }
+.sgame__meter i { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, #f9d268, var(--premium-leaf, #d8e8b0)); transition: width .7s var(--ease-out); }
+.sgame__left { display: flex; flex-direction: column; align-items: center; line-height: 1.15; }
+.sgame__left b { font-size: 24px; font-weight: 750; }
+.sgame__left span { font-size: 11.5px; color: #c9dacf; }
+.sgame__left small { font-size: 11.5px; color: #c9dacf; margin-top: 2px; }
+
+.sgame__quick { display: flex; align-items: center; gap: 16px; padding: 16px 20px; margin-bottom: 16px; border-radius: 18px;
+  background: var(--accent-soft); border: 1px solid var(--accent-line); }
+.sgame__quick-icon { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; flex: none; background: var(--surface); color: var(--accent-strong); }
+.sgame__quick-main { flex: 1; min-width: 0; }
+.sgame__quick-main > b { font-size: 15px; font-weight: 700; }
+.sgame__quick-list { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 6px; font-size: 12px; color: var(--ink-2); }
+.sgame__pair { display: inline-flex; align-items: center; gap: 5px; }
+.sgame__pair .ctile { --s: 22px; border-radius: 7px; }
+
+/* ערימת הכרטיסים: שניים מאחור, כמה שנשארו */
+.sgame__stage { min-width: 0; }
+.tstack { position: relative; isolation: isolate; }
+.tstack::before, .tstack::after { content: ""; position: absolute; z-index: -1; inset-inline: 22px; bottom: -10px; height: 60px; border-radius: 0 0 26px 26px; background: var(--surface); box-shadow: var(--ring), var(--e-0); }
+.tstack::after { inset-inline: 44px; bottom: -20px; opacity: .6; }
+.tstack[data-left="1"]::after, .tstack[data-left="0"]::after, .tstack[data-left="0"]::before { display: none; }
+.tstack .tcard { position: relative; touch-action: pan-y; }
+.tstack .tcard.is-entering { animation: stack-rise .5s var(--ease-out) both; }
+@keyframes stack-rise { from { opacity: .4; transform: translateY(16px) scale(.965); } to { opacity: 1; transform: none; } }
+.tcard.is-drag { cursor: grabbing; transition: none !important; box-shadow: var(--ring), var(--e-3); }
+.tcard.is-drag .tcard__head { background: linear-gradient(180deg, color-mix(in srgb, var(--mark) calc(var(--swipe, 0) * 30%), var(--accent-soft)), var(--surface)); }
+.sgame__hint { display: none; margin: 26px 0 0; text-align: center; font-size: 12px; color: var(--ink-3); }
+@media (pointer: coarse) { .sgame__hint { display: block; } }
+.choice { position: relative; }
+.choice__count { position: absolute; top: 8px; inset-inline-end: 9px; min-width: 26px; height: 20px; padding: 0 6px; border-radius: 999px; display: grid; place-items: center;
+  background: var(--c); color: #fff; font-size: 11px; font-weight: 800; font-variant-numeric: tabular-nums; }
+
+/* העפה: האות של בית העסק עפה אל הקטגוריה, גל בצבע שלה, והסכום עולה */
+.sflight { position: fixed; z-index: 300; margin: 0; pointer-events: none; box-shadow: 0 14px 30px -14px #0006; }
+.sburst { position: fixed; z-index: 299; pointer-events: none; border-radius: 30%; border: 3px solid var(--c); background: color-mix(in srgb, var(--c) 18%, transparent); }
+.splus { position: fixed; z-index: 301; pointer-events: none; padding: 3px 10px; border-radius: 999px; background: var(--ink); color: var(--ink-inv); font-size: 13px; font-weight: 800; white-space: nowrap; box-shadow: var(--e-2); }
+
+/* ==========================================================================
+   רספונסיבי, ובלי תנועה למי שביקש
+   ========================================================================== */
+@media (max-width: 900px) {
+  .xdoors { grid-template-columns: 1fr; gap: 14px; }
+  .xextras { grid-template-columns: 1fr; }
+  .xnav { margin-bottom: 16px; }
+  .sgame__hud { grid-template-columns: minmax(0, 1fr) auto; gap: 12px 16px; padding: 16px 18px; }
+  .sgame__meter { grid-column: 1 / -1; grid-row: 2; }
+  .sgame__score b { font-size: 22px; }
+  .sgame__quick { flex-wrap: wrap; }
+  .sgame__quick .btn { width: 100%; }
+}
+@media (max-width: 650px) {
+  .xdoor__taste { min-height: 0; padding: 12px 18px; }
+  .xdoor__head { padding: 18px 18px 4px; }
+  .xdoor__line { padding: 12px 18px 16px; }
+  .xfan { height: 128px; }
+  .xfan__card { height: 112px; }
+  .xsearch { flex-wrap: wrap; }
+  .xsearch .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .side.in-explore .navsub, .tstack .tcard.is-entering, .xspark { animation: none !important; }
+  .xdoor, .xfan__card, .sgame__meter i { transition: none !important; }
+}

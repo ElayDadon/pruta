@@ -1,0 +1,18 @@
+# Text files are stored with LF. The single-file build hashes every script for its
+# Content-Security-Policy, so line endings must not change between machines.
+* text=auto eol=lf
+
+# Windows launcher needs CRLF
+*.bat text eol=crlf
+
+# Binary assets
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.woff binary
+*.woff2 binary
+*.xlsx binary
+*.xls binary
+
+# Keep the test fixtures exactly as the programs that wrote them did
+tests/fixtures/** -text

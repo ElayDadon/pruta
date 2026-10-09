@@ -28,10 +28,6 @@ eight hundred rows. Pruta turns that file into the three answers people actually
 want — *how much went out, is that more or less than usual, and what drove it* —
 without uploading a single number anywhere.
 
-The name says it: a *pruta* is the smallest coin, and *lifrot* (לפרוט) means both
-to break a note into change and to itemise. *"כל פרוטה ופרוטה מצטרפת לחשבון גדול"* —
-every coin adds up to a large sum.
-
 ## Get started
 
 **Option 1 — one file, nothing to install.**
